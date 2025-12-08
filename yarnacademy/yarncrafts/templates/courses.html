@@ -1,0 +1,226 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>YarnCrafts - Courses</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    .topbar {
+      background: #d47ecb;
+      color: white;
+      font-size: 14px;
+    }
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 28px;
+      color: #b53dae !important;
+    }
+
+    /* HERO SECTION */
+    .courses-hero {
+      background: linear-gradient(135deg, #fdf4ff 0%, #ffffff 100%);
+      padding: 5rem 0;
+      text-align: center;
+    }
+    .courses-hero h1 {
+      color: #8c2b82;
+      font-weight: 700;
+      font-size: 3rem;
+    }
+    .courses-hero p {
+      color: #7a7a7a;
+      font-size: 1.1rem;
+    }
+
+    .section-title {
+      font-weight: 700;
+      color: #8c2b82;
+      margin-bottom: 1rem;
+    }
+
+    .card-title {
+      color: #b53dae;
+      font-weight: 700;
+    }
+
+    .card {
+      border: none;
+      transition: 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0px 4px 18px rgba(0,0,0,0.12);
+    }
+
+    .card-img-top {
+      height: 230px;
+      object-fit: cover;
+    }
+
+    .nav-link.active {
+      color: #b53dae !important;
+      font-weight: 600;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- TOP BAR -->
+  <div class="topbar py-2">
+    <div class="container d-flex flex-column flex-md-row justify-content-between text-center text-md-start">
+      <div>📍 YarnCrafts Institute, New York &nbsp; | &nbsp; ✉️ info@yarncrafts.com</div>
+      <div>Privacy Policy / Terms / Learning Policies</div>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg bg-white shadow-sm">
+    <div class="container">
+      <a class="navbar-brand" href="/">YarnCrafts</a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="/courses">Courses</a></li>
+          <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
+          <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
+            <li class="nav-item"><a class="nav-link" href="/register">Register</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="courses-hero">
+    <div class="container">
+      <h1>Our Courses</h1>
+      <p class="lead">This course introduces learners to the art of yarn crafting, including knitting, crochet, and weaving. By the end, participants will be able to identify different yarn types, master basic stitches, and complete a small project such as a scarf or decorative wall hanging. The course is divided into four modules: tools and materials, basic techniques, intermediate projects, and finishing touches. Learners will need yarn, needles, and scissors. The course runs for 6 weeks with weekly hands-on sessions.</p>
+    </div>
+  </section>
+
+
+<!-- COURSES LIST SECTION -->
+<section class="py-5">
+  <div class="container" >
+
+    <h2 class=text-centre">Courses Offered</h2>
+
+    <div class="row g-4">
+
+      <!-- 1. Knitting -->
+      <div class="col-md-3">
+        <div class="card h-100">
+          <img src="{% static 'images/knitting.webp'%}">
+          <div class="card-body">
+            <h5 class="card-title">Knitting</h5>
+            <p class="card-text">Learn foundational and advanced knitting techniques for garments and accessories.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Crocheting -->
+      <div class="col-md-3">
+        <div class="card h-100">
+          <img src="{% static 'images/crotchet1.jpg' %}" alt="My Picture">
+
+          <div class="card-body">
+            <h5 class="card-title">Crocheting</h5>
+            <p class="card-text">Master beginner to expert crochet, including amigurumi, lace, and creative projects.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Embroidery -->
+      <div class="col-md-3">
+        <div class="card h-100">
+           <img src="{% static 'images/embroidery.webp'%}">
+          <div class="card-body">
+            <h5 class="card-title">Embroidery</h5>
+            <p class="card-text">Learn decorative stitching, patterns, textured needlework, and creative designs.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Macramé -->
+      <div class="col-md-3">
+        <div class="card h-100">
+          <img src="{% static 'images/macrame.jpg'%}">
+
+          <div class="card-body">
+            <h5 class="card-title">Macramé</h5>
+            <p class="card-text">Create wall hangings, plant holders, and decorations using macramé knotting techniques.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. Weaving -->
+      <div class="col-md-3">
+        <div class="card h-100">
+             <img src="{% static 'images/weaving.webp'%}">
+
+          <div class="card-body">
+            <h5 class="card-title">Weaving</h5>
+            <p class="card-text">Learn loom weaving techniques to create patterns, fabrics, and textile art pieces.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. Needle Felting -->
+      <div class="col-md-3">
+        <div class="card h-100">
+          <img src="{% static 'images/needle felting.webp'%}">
+          <div class="card-body">
+            <h5 class="card-title">Needle Felting</h5>
+            <p class="card-text">Learn the art of shaping wool into adorable felt figures and sculpted creations.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7. Yarn Dyeing -->
+      <div class="col-md-3">
+        <div class="card h-100">
+          <img src="{% static 'images/yarn d.webp'%}">
+          <div class="card-body">
+            <h5 class="card-title">Yarn Dyeing</h5>
+            <p class="card-text">Explore natural & synthetic dyeing techniques to create custom-colored yarns.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8. Textile Design -->
+      <div class="col-md-3">
+        <div class="card h-100">
+          <img src="{% static 'images/textile d.jpg'%}">
+          <div class="card-body">
+            <h5 class="card-title">Textile Design</h5>
+            <p class="card-text">Learn pattern creation, fabric concepts, textile printing, and digital design basics.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+ <!-- FOOTER -->
+  <footer style="background:#8c2b82;" class="py-4 mt-5">
+    <div class="container text-center text-white">
+      <p class="mb-0">© <span id="year"></span> YarnCrafts. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
