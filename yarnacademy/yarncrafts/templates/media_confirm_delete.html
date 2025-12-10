@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Media - Yarn Crafts</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3e8ff; /* light lavender background */
+            color: #3c096c; /* deep purple text */
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .delete-container {
+            background: #e0aaff; /* soft purple card */
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(60, 9, 108, 0.2);
+            width: 400px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #5a189a;
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+
+        form {
+            margin-top: 15px;
+        }
+
+        button {
+            background: #c1121f; /* red for delete */
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        button:hover {
+            background: #a4161a;
+        }
+
+        .cancel-link {
+            display: inline-block;
+            padding: 10px 15px;
+            background: #5a189a; /* purple cancel button */
+            color: white;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .cancel-link:hover {
+            background: #7b2cbf;
+        }
+    </style>
+</head>
+<body>
+<div class="delete-container">
+    <h2>Delete "{{ media.title }}"?</h2>
+    <p>This action cannot be undone. Are you sure you want to remove this file?</p>
+    <form method="post">
+      {% csrf_token %}
+      <button type="submit">Yes, delete</button>
+      <a href="{% url 'media_list' %}" class="cancel-link">Cancel</a>
+    </form>
+</div>
+</body>
+</html>

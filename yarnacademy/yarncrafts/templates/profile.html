@@ -2,15 +2,104 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>User Profile - YarnCrafts</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f8f0ff; }
+        h2, h3 { color: #6a0dad; }
+        .container {
+            background: white; padding: 2rem; border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(106, 13, 173, 0.2); max-width: 900px;
+        }
+        p { font-size: 1.1rem; color: #4b0082; }
+        .btn-purple { background-color: #6a0dad; border-color: #6a0dad; color: white; }
+        .btn-purple:hover { background-color: #4b0082; border-color: #4b0082; }
+        .welcome-banner {
+            background: linear-gradient(90deg, #6a0dad, #9b59b6);
+            color: white; padding: 1rem; border-radius: 8px; text-align: center; margin-bottom: 1.5rem;
+        }
+        .navbar-purple {
+            background-color: #6a0dad;
+        }
+        .navbar-purple .nav-link, .navbar-purple .navbar-brand {
+            color: white;
+        }
+        .navbar-purple .nav-link:hover {
+            color: #e0aaff;
+        }
+    </style>
 </head>
 <body>
-<div class="container mt-5">
-    <h2>User Profile</h2>
-    <p>Welcome,{{ user.username}}</p>
-    <p>Email: {{ user.email}}</p>
 
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-purple">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">YarnCrafts</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarNav" aria-controls="navbarNav"
+            aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'courses' %}">Courses</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="/media">All Media files</a></li>
+          <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container mt-5">
+    <!-- Welcome Banner -->
+    <div class="welcome-banner">
+        <h2>Welcome back to YarnCrafts 🧶✨</h2>
+        <p>Let your creativity flow—your next masterpiece starts now!<br>
+        <strong>Let the yarn magic begin!</strong></p>
+    </div>
+
+    <!-- User Profile Section -->
+    <h3>User Profile</h3>
+    <p>Welcome, <strong>{{ user.username }}</strong></p>
+    <p>Email: {{ user.email }}</p>
+    <a href="{% url 'logout' %}" class="btn btn-purple mt-3">Logout</a>
+
+    <!-- Enrolled Courses -->
+    <h3 class="mt-5">Your Enrolled Courses</h3>
+    <ul>
+        {% for enrollment in enrolled_courses %}
+            <li>{{ enrollment.course.title }} (enrolled on {{ enrollment.enrolled_at|date:"M d, Y" }})</li>
+        {% empty %}
+            <li>You haven’t enrolled in any courses yet.</li>
+        {% endfor %}
+    </ul>
+
+    <!-- Available Courses -->
+    <h3 class="mt-5">Available Courses</h3>
+    <div class="row">
+        {% for course in courses %}
+        <div class="col-md-6 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title text-purple">{{ course.title }}</h5>
+                    <p class="card-text">{{ course.description }}</p>
+                    <p><strong>Duration:</strong> {{ course.duration }}</p>
+                    <p><strong>Price:</strong> ${{ course.price }}</p>
+                    <form method="post" action="{% url 'enroll_course' course.id %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-purple">Select Course</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p>No courses available at the moment.</p>
+        {% endfor %}
+    </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
